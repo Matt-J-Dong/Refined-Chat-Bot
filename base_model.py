@@ -1,3 +1,4 @@
+import numpy
 import torch
 from transformers import GPT2LMHeadModel, GPT2Tokenizer #pylint: disable=import-error
 
@@ -16,27 +17,43 @@ text_examples = [
     "In a galaxy far, far away",
     "To be or not to be, that is the question"
 ]
-
+harrypotter = [
+    "Respond to the question in the way that Harry Potter would. The question: Explain what a LSTM is, and give an example explanation.",
+    "Respond to the question in the way that Harry Potter would. The question: Who is Voldemort?",
+    "Respond to the question in the way that Harry Potter would. The question: What's 1+1?",
+    "Respond to the question in the way that Harry Potter would. The question: Would you like to eat with Ron tomorrow in the cafeteria?"
+]
 # Tokenizing and generating responses for the text examples
-for text in text_examples:
+# for text in text_examples:
+#     inputs = tokenizer.encode(text, return_tensors="pt")
+
+#     # Move inputs to GPU if available
+#     if torch.cuda.is_available():
+#         inputs = inputs.cuda()
+
+#     outputs = model.generate(
+#         inputs,
+#         max_length=50,
+#         num_return_sequences=1,
+#         #verbose=True  # Verbose output
+#     )
+
+#     print(f"Input: {text}\nOutput: {tokenizer.decode(outputs[0], skip_special_tokens=True)}\n")
+
+for text in harrypotter:
     inputs = tokenizer.encode(text, return_tensors="pt")
 
-    # Generate attention mask (1 for real tokens and 0 for padding tokens)
-    attention_mask = inputs.ne(tokenizer.pad_token_id).int()
-
-    # Move inputs and attention mask to GPU if available
+    # Move inputs to GPU if available
     if torch.cuda.is_available():
         inputs = inputs.cuda()
-        attention_mask = attention_mask.cuda()
 
     outputs = model.generate(
         inputs,
-        max_length=50,
+        max_length=100,
         num_return_sequences=1,
-        attention_mask=attention_mask,
-        pad_token_id=tokenizer.eos_token_id,
-        verbose=True  # Verbose output
+        #verbose=True  # Verbose output
     )
 
-    print(f"Input: {text}\nOutput: {tokenizer.decode(outputs[0], skip_special_tokens=True)}\n")
-
+    print(f"Input: {text}")
+    print(f"Output 1: {tokenizer.decode(outputs[0], skip_special_tokens=True)}")
+    #print(f"Output 2: {tokenizer.decode(outputs[1], skip_special_tokens=True)}")
