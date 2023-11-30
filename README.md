@@ -34,62 +34,8 @@ Here at QuizVerse, we are tired of the current flashcard app market. Too many ar
 
 ## Our core development team:
 * Matthew Dong [GitHub](https://github.com/Matt-J-Dong)
-* James Chen [GitHub](https://github.com/1019jchen)
-* Jonathan Zhou [GitHub](https://github.com/chiyanz)
-* Rohan Khanderia [GitHub](https://github.com/RohanK6)
-* Mert Bayturk [GitHub](https://github.com/mertbayt)
+* Alex Huh [GitHub](https://github.com/Alex-Huh)
+* Rockie Jiang [GitHub](https://github.com/rj1551)
 
-## Roles:
-* Sprint 0 Product Owner: Mert
-* Sprint 0 Scrum Master: James
-
-
-* Sprint 1 Product Owner: James
-* Sprint 1 Scrum Master: Jonathan
-
-
-* Sprint 2 Product Owner: Jonathan
-* Sprint 2 Scrum Master: Matthew
-
-
-* Sprint 3 Product Owner: Matthew
-* Sprint 3 Scrum Master: Rohan
-
-
-* Sprint 4 Product Owner: Rohan
-* Sprint 4 Scrum Master: Mert
-
-
-## Contributing to QuizVerse:
-If you want to contribute to QuizVerse, here are the related guidelines: [Link](./CONTRIBUTING.md)
-
-## Build/Test QuizVerse:
-Information on how to build and test QuizVerse yourself, if you choose to do so:
-1. Obtaining the code for this repository:
-    * Clone the code for the repository onto your local machine.
-    * Navigate into the project directory `./final-project-quizverse`
-2. Build and run the front end code
-    * Navigate into the front end directory `cd front-end`
-    * Run `npm install` to install all necessary dependencies
-    * Run `npm start` to start running the code
-    * The front end will be running at http://localhost:3000, assuming port 3000 was not previously in use.
-3. Build and run the back end code:
-    * Create a new terminal so the front end and back end can run simultaneously
-    * Navigate into the back end directory `cd ../back-end` (or `cd back-end` if you have already navigated back to the root directory)
-    * Run `npm install` to install all necessary dependencies
-    * Run `npx nodemon server.js` to start running the code
-    * The back end will be running at http://localhost:3001, assuming port 3001 was not previously in use.
-
-**The application should now be fully functional! Navigate to http://localhost:3000 and enjoy using QuizVerse!**
-
-4. If you wish to test the code:
-    * Create a new terminal for your testing results
-    * Navigate into the back end directory (`./final-project-quizverse/back-end` should be your current directory)
-    * **Important!** Make sure the back end is ***not running***, the test script generates its own version of the backend, having both running will create a conflict for the port.
-    * Run `npm test`
-    * Press **Ctrl+C** to close out the current testing run, and see the code coverage results.
-
-## App Map:
-<img src="./ux-design/app-map.png" alt= “map” width="75%" height="75%">
-
-Hosted on Digital Ocean: https://shark-app-xrp49.ondigitalocean.app/
+## Contributing to the Project:
+If you want to contribute to our project, here are the related guidelines: [Link](./CONTRIBUTING.md)
