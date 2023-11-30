@@ -1,8 +1,8 @@
 import sentencepiece
 from transformers import T5Tokenizer, T5ForConditionalGeneration #pylint: disable=import-error
 
-tokenizer = T5Tokenizer.from_pretrained('t5-small')
-model = T5ForConditionalGeneration.from_pretrained('t5-small')
+tokenizer = T5Tokenizer.from_pretrained('t5-large')
+model = T5ForConditionalGeneration.from_pretrained('t5-large')
 
 # Example input texts for different tasks
 texts = [
@@ -26,4 +26,3 @@ generated_texts = [generate_text(text) for text in texts]
 # Printing the outputs
 for num, text in enumerate(generated_texts, 1):
     print(f"Output # {num}: {text}\n")
-

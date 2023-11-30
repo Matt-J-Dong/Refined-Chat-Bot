@@ -10,7 +10,7 @@ In recent years, with the release of ChatGPT, large language models have been us
 
 ---
 ## Related Works
-* https://arxiv.org/abs/2211.06869
+* <https://arxiv.org/abs/2211.06869>
 
 ## Our core development team:
 * Matthew Dong [GitHub](https://github.com/Matt-J-Dong)
