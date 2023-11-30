@@ -23,7 +23,6 @@ Together as a group, we worked together to initially search for possible dataset
     * 12/3 to 12/10: Our complete variation on the model should hopefully be complete by this point, to give some leeway for other finalizing tasks that we will need to perform. Initial thoughts/ideas for the presentation video and the slides should be worked on during this week.
     * 12/10 to 12/17: The model will be completely finalized by the end of this week. Final changes to the presentation video and the slides should be made during this week. We will finish typing up the wrap report report during this week as well (and the survey). 
 
-
 ## Setting Up a Local Copy
 
 1. Fork the project on GitHub.
