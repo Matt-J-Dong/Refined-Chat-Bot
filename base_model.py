@@ -21,7 +21,26 @@ harrypotter = [
     "Respond to the question in the way that Harry Potter would. The question: Explain what a LSTM is, and give an example explanation.",
     "Respond to the question in the way that Harry Potter would. The question: Who is Voldemort?",
     "Respond to the question in the way that Harry Potter would. The question: What's 1+1?",
-    "Respond to the question in the way that Harry Potter would. The question: Would you like to eat with Ron tomorrow in the cafeteria?"
+    "Respond to the question in the way that Harry Potter would. The question: Would you like to eat with Ron tomorrow in the cafeteria?",
+    "Respond to the question in the way that Harry Potter would. The question: How do you feel about Ron and Hermione?",
+    ""
+]
+harrypotter2 = [
+"""Your task is to act as a Harry Potter-like dialogue agent in the Magic World. There is a dialogue between Harry
+Potter and others. You are required to give a response to the dialogue from the perspective of Harry Potter. To do this, you
+can write out your thought and answer with "Harry’s response" at the end. This is the prompt that you will be responding to: Explain what a LSTM is, and give an example explanation.""",
+    """Your task is to act as a Harry Potter-like dialogue agent in the Magic World. There is a dialogue between Harry
+Potter and others. You are required to give a response to the dialogue from the perspective of Harry Potter. To do this, you
+can write out your thought and answer with "Harry’s response" at the end. This is the prompt that you will be responding to: Who is Voldemort?""",
+    """Your task is to act as a Harry Potter-like dialogue agent in the Magic World. There is a dialogue between Harry
+Potter and others. You are required to give a response to the dialogue from the perspective of Harry Potter. To do this, you
+can write out your thought and answer with "Harry’s response" at the end. This is the prompt that you will be responding to: What's 1+1?""",
+    """Your task is to act as a Harry Potter-like dialogue agent in the Magic World. There is a dialogue between Harry
+Potter and others. You are required to give a response to the dialogue from the perspective of Harry Potter. To do this, you
+can write out your thought and answer with "Harry’s response" at the end. This is the prompt that you will be responding to: Would you like to eat with Ron tomorrow in the cafeteria?""",
+    """Your task is to act as a Harry Potter-like dialogue agent in the Magic World. There is a dialogue between Harry
+Potter and others. You are required to give a response to the dialogue from the perspective of Harry Potter. To do this, you
+can write out your thought and answer with "Harry’s response" at the end. This is the prompt that you will be responding to: How do you feel about Ron and Hermione?""",
 ]
 # Tokenizing and generating responses for the text examples
 # for text in text_examples:
@@ -40,7 +59,24 @@ harrypotter = [
 
 #     print(f"Input: {text}\nOutput: {tokenizer.decode(outputs[0], skip_special_tokens=True)}\n")
 
-for text in harrypotter:
+# for text in harrypotter:
+#     inputs = tokenizer.encode(text, return_tensors="pt")
+
+#     # Move inputs to GPU if available
+#     if torch.cuda.is_available():
+#         inputs = inputs.cuda()
+
+#     outputs = model.generate(
+#         inputs,
+#         max_length=100,
+#         num_return_sequences=1,
+#         #verbose=True  # Verbose output
+#     )
+
+#     print(f"Input: {text}")
+#     print(f"Output 1: {tokenizer.decode(outputs[0], skip_special_tokens=True)}")
+
+for text in harrypotter2:
     inputs = tokenizer.encode(text, return_tensors="pt")
 
     # Move inputs to GPU if available
@@ -51,9 +87,9 @@ for text in harrypotter:
         inputs,
         max_length=100,
         num_return_sequences=1,
+        pad_token_id=tokenizer.eos_token_id
         #verbose=True  # Verbose output
     )
 
     print(f"Input: {text}")
-    print(f"Output 1: {tokenizer.decode(outputs[0], skip_special_tokens=True)}")
-    #print(f"Output 2: {tokenizer.decode(outputs[1], skip_special_tokens=True)}")
+    print(f"Output: {tokenizer.decode(outputs[0], skip_special_tokens=True)}")
