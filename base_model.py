@@ -4,12 +4,9 @@ import numpy
 import torch
 from transformers import GPT2LMHeadModel, GPT2Tokenizer #pylint: disable=import-error
 
-# Load pre-trained model and tokenizer
 model_name = "gpt2"
 model = GPT2LMHeadModel.from_pretrained(model_name)
 tokenizer = GPT2Tokenizer.from_pretrained(model_name)
-
-# Check if CUDA (GPU support) is available and move the model to GPU if possible
 if torch.cuda.is_available():
     model = model.cuda()
 
@@ -80,8 +77,6 @@ can write out your thought and answer with "Harry’s response" at the end. This
 
 for text in harrypotter2:
     inputs = tokenizer.encode(text, return_tensors="pt")
-
-    # Move inputs to GPU if available
     if torch.cuda.is_available():
         inputs = inputs.cuda()
 

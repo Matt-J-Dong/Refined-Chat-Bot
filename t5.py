@@ -14,16 +14,11 @@ texts = [
     "summarize: The Great Wall of China is one of the greatest wonders of the world. It was built over a period of 2000 years and stretches more than 13,000 miles.",
 ]
 
-# Function to generate outputs for each input text
 def generate_text(input_text):
     input_ids = tokenizer(input_text, return_tensors="pt").input_ids
     outputs = model.generate(input_ids, max_new_tokens=999, pad_token_id=tokenizer.eos_token_id)
     return tokenizer.decode(outputs[0], skip_special_tokens=True)
-
-# Generating outputs
 generated_texts = [generate_text(text) for text in texts]
 
-# Printing the outputs
 for num, text in enumerate(generated_texts, 1):
     print(f"Output # {num}: {text}\n")
-
