@@ -1,3 +1,5 @@
+#Currently just returns a copy of the input, this is a fail
+
 from transformers import BartTokenizer, BartForConditionalGeneration #pylint: disable=import-error
 
 # Initialize the tokenizer and model
@@ -14,14 +16,14 @@ texts = [
 
 # Function to generate outputs for each input text
 def generate_text(input_text):
-    inputs = tokenizer([input_text], max_length=1024, return_tensors='pt')
-    summary_ids = model.generate(inputs['input_ids'], num_beams=4, max_length=50, early_stopping=True)
+    inputs = tokenizer([input_text], max_length=1024, return_tensors='pt', truncation=True)
+    summary_ids = model.generate(inputs['input_ids'], num_beams=5, max_length=200, early_stopping=True)
     return tokenizer.decode(summary_ids[0], skip_special_tokens=True)
 
 # Generating outputs
 generated_texts = [generate_text(text) for text in texts]
-num=0
+num = 0
 for text in generated_texts:
-    num=num+1
+    num += 1
     print(f"Output # {num}")
     print(text)

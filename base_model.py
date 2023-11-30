@@ -1,3 +1,5 @@
+#The model is very weak right now and does not return good responses.
+
 import numpy
 import torch
 from transformers import GPT2LMHeadModel, GPT2Tokenizer #pylint: disable=import-error
@@ -85,7 +87,7 @@ for text in harrypotter2:
 
     outputs = model.generate(
         inputs,
-        max_length=100,
+        max_length=600,
         num_return_sequences=1,
         pad_token_id=tokenizer.eos_token_id
         #verbose=True  # Verbose output
