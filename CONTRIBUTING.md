@@ -5,6 +5,25 @@ email, or any other method with the owners of this repository before making a ch
 
 Please note we have a code of conduct, please follow it in all your interactions with the project.
 
+## Work Plan
+### Before Milestone 1:
+Together as a group, we worked together to initially search for possible datasets that could work with to see what we could potentially work on. When that did not lead to a decision, we took a different approach and discussed what type of project we would find interesting. After a lengthy discussion involving the feasibility, uniqueness, and potential justification for the project, we settled on creating a chat bot that can train on specific characters or viewpoints, and respond as if they were from that viewpoint as completely as possible, including saying that they don't know for information the character would not know. This will certainly be difficult and we know there are no guarantees we will have a high degree of success, but at the very least it will be an interesting topic to research. In regards to writing the report, we all contributed to the report by writing the different sections and convening to share ideas and review each other's work.
+
+### Tasks to be Executed on a Weekly Basis:
+    * Updating the GitHub README: It will be easier to do when the changes we made are fresh in our minds.
+    * Working on Submitting Tasks to HPC: The sooner we can use the HPC the better, so we don't have to deal with errors and long wait times at the last minute. We will have to relearn how to use the HPC because we have not used it for a while.
+
+### Before Milestone 2:
+    * 11/5 to 11/12: Decide on an open source language model to act as our base model. This will likely be LLAMA, but we will do further evaluations to make sure it suits our project. We'll also learn how the base model works, and do some light tinkering with it to experiment.
+    * 11/12 to 11/19: Train the base model, and start working on adding our planned modifications for the first time.
+    * 11/19 to 11/26: Finish some basic training of our new modified model, and hopefully find some basic results. If not, we will report on our negative results and either work on solving the issue or shifting around the goal of our project to be more feasible. Also we will finish typing up the midway checkpoint report together, and provide an update on our progress.
+
+### Before Milestone 3:
+    * 11/26 to 12/3: Regroup after the last milestone, and rework our work plan to find out what we need to do next. Assuming everything is going as planned, we should be able to add more complicated/interesting variations to the base model by this point.
+    * 12/3 to 12/10: Our complete variation on the model should hopefully be complete by this point, to give some leeway for other finalizing tasks that we will need to perform. Initial thoughts/ideas for the presentation video and the slides should be worked on during this week.
+    * 12/10 to 12/17: The model will be completely finalized by the end of this week. Final changes to the presentation video and the slides should be made during this week. We will finish typing up the wrap report report during this week as well (and the survey). 
+
+
 ## Setting Up a Local Copy
 
 1. Fork the project on GitHub.
