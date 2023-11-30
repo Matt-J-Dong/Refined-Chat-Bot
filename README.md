@@ -1,6 +1,6 @@
 # Refined-Chat-Bot
 
-![logo](./image.jpg){width=50% height=50%}
+![logo](./image.jpg)
 
 > Can large language models respond to questions in character, including questions that the character would not know?
 
