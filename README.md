@@ -23,6 +23,10 @@ While the paper does attempt to train a model with the intent that it responds i
 Data parsing and initial EDA is in the `preprocessing` folder. 
 
 For LLaMA, the most relevant files are `models/llama_finetune.sbatch` and `models/llama_finetuned_test.py`. While we were fine tuning, the llama training command was normally run interactively through `srun` instead of `sbatch`, which may result in different behavior. If this is the case, just copy and run the `autotrain` command after setting up `srun`.
+The workflow for fine tuning the LLaMA model, for reference:
+* Set up the singularity container and enter it after requesting HPC resources
+* Run `autotrain llm...`, present in `llama_train_cli.sh`
+* Run `python llama_finetuned_test.py` 
 
 For Falcon, `testing_falcon.ipynb` contains all the code to load the pretrained base model, test it, finetune it, save it, and load and test the finetuned model, along with some example outputs. The finetuned version is loaded by using the `adapter_config.json`, `adapter_model.bin`, `special_tokens_map.json`, `tokenizer.json`, and `tokenizer_config.json` files in the `model` folder, and if further trained will save to this folder as well.
 
