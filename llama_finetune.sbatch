@@ -12,7 +12,26 @@ module purge
 
 if [ -e /dev/nvidia0 ]; then nv="--nv"; fi
 
-singularity exec $nv \
+singularity exec --nv \
   --overlay /scratch/mjd9571/singularity/overlay-50G-10M.ext3:rw \
   /scratch/work/public/singularity/cuda11.2.2-cudnn8-devel-ubuntu20.04.sif \
-  /bin/bash -c "source /ext3/env.sh; autotrain llm --train --project_name 'Refined_Chatbot' --model 'abhishek/llama-2-7b-hf-small-shards' --data_path . --use_peft --use_int4 --learning_rate 2e-4 --train_batch_size 2 --num_train_epochs 9 --trainer sft > training.log &"
+  /bin/bash -c "source /ext3/env.sh; autotrain llm \
+--train \
+--model 'abhishek/llama-2-7b-hf-small-shards' \
+--project-name 'Refined_Chat_Bot' \
+--data-path './' \
+--text-column "text" \
+--lr 2e-3 \
+--batch-size 32 \
+--epochs 8 \
+--block-size 1024 \
+--warmup-ratio 0.01 \
+--lora-r 16 \
+--lora-alpha 32 \
+--lora-dropout 0.05 \
+--weight-decay 0.01 \
+--gradient-accumulation 4 \
+--quantization "int4" \
+--mixed-precision "fp16" \
+--peft"
+
