@@ -1,3 +1,5 @@
+#!/bin/bash
+
 autotrain llm \
 --train \
 --model 'abhishek/llama-2-7b-hf-small-shards' \
