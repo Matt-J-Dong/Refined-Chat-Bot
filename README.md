@@ -18,6 +18,12 @@ About one week into our project process, we discovered a paper that worked on a 
 While the paper does attempt to train a model with the intent that it responds in the same manner as the character Harry Potter, they largely focused on the sentiments and relationships between each character. Although we don't share any of our methodology, the Harry Potter Dataset (HPD) used in this paper is very conveniently aligned for our project, so we will also be using their dataset for training our model as well.
 
 ---
+
+## Running the Code
+For LLaMA, the most relevant files are models/llama_finetune.sbatch and models/llama_finetuned_test.py. While we were fine tuning, the llama training command was normally run interactively through srun instead of sbatch, which may result in different behavior. If this is the case, just copy and run the autotrain command after setting up srun.
+
+
+---
 ## Related Works
 * <https://arxiv.org/abs/2211.06869>
 
