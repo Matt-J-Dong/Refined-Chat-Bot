@@ -15,7 +15,7 @@ Of the 6 models we used as a baseline, only DialoGPT, LLAMA and Falcon-7B were a
 
 About one week into our project process, we discovered a paper that worked on a topic remarkably similar to our project proposal: Large Language Models Meet Harry Potter: A Bilingual Dataset for Aligning Dialogue Agents with Characters (Chen et al. Link).
 
-While the paper does attempt to train a model with the intent that it responds in the same manner as the character Harry Potter, they largely focused on the sentiments and relationships between each character. Although we don't share any of our methodology, the Harry Potter Dataset (HPD) used in this paper is very conveniently aligned for our project, so we will also be using their dataset for training our model as well.
+While the paper does attempt to train a model with the intent that it responds in the same manner as the character Harry Potter, they largely focused on the sentiments and relationships between each character and effectively augments the data by adding these relationships and other context. Although we don't share any of our methodology, the Harry Potter Dataset (HPD) used in this paper is still very conveniently aligned for our project, so we will be using parts of their dataset for training our model as well.
 
 ---
 
