@@ -1,0 +1,216 @@
+Your questions cover a wide range of advanced topics in computer science, particularly in functional programming, type theory, and object-oriented programming. Let's address each one in detail.
+
+### 1. Lambda Calculus and Y Combinator
+
+**(a)** In lambda calculus, substitution and β-reduction are different operations. 
+
+- Substitution \((\lambda x.E)[M/x]\) means replacing every occurrence of \(x\) in \(E\) with \(M\). This is a straightforward textual replacement.
+- β-reduction \((\lambda x.E)M\) involves applying the function \((\lambda x.E)\) to the argument \(M\), which also results in replacing \(x\) in \(E\) with \(M\), but as part of a function application.
+
+The results of these two operations are syntactically the same but conceptually different. In substitution, there's no notion of function application, while in β-reduction, it's about applying a function.
+
+**(b)** The Y combinator in lambda calculus is typically represented as:
+
+\[
+Y = \lambda f.(\lambda x.f (x x)) (\lambda x.f (x x))
+\]
+
+**(c)** To show that \( Y f \Leftrightarrow f (Y f) \):
+
+1. Apply \( Y \) to \( f \):
+   \[ Y f = (\lambda f.(\lambda x.f (x x)) (\lambda x.f (x x))) f \]
+2. Reducing it gives:
+   \[ = (\lambda x.f (x x)) (\lambda x.f (x x)) \]
+3. Further reduction leads to:
+   \[ = f ((\lambda x.f (x x)) (\lambda x.f (x x))) \]
+4. Recognizing that the term inside \( f \) is \( Y f \), we get:
+   \[ = f (Y f) \]
+
+**(d)** For a recursive function using Y combinator, let's define a simple function like the sum of numbers up to \( n \):
+
+\[ 
+Sum = Y (\lambda sum. \lambda n. \text{if } n=0 \text{ then } 0 \text{ else } n + sum (n-1)) 
+\]
+
+Reductions for \( Sum(3) \) would be:
+
+1. \( Sum(3) \)
+2. \( 3 + Sum(2) \)
+3. \( 3 + (2 + Sum(1)) \)
+4. \( 3 + (2 + (1 + Sum(0))) \)
+5. \( 3 + (2 + (1 + 0)) \)
+6. \( 6 \)
+
+**(e)** The two Church-Rosser Theorems state:
+
+1. If an expression can be reduced to two different normal forms, then there is a common expression to which both can be further reduced.
+2. If an expression has a normal form, then any reduction strategy will eventually reach that normal form.
+
+### 2. ML Programming
+
+**(a)** The ML function with type \((’a \rightarrow ’b) \rightarrow (’b \text{ list} \rightarrow ’c \text{ list}) \rightarrow (’c \rightarrow ’d) \rightarrow ’a \rightarrow ’d\) would look like:
+
+```ml
+fun transform f1 f2 f3 x = f3 (hd (f2 (map f1 [x])))
+```
+
+**(b)** For the given function:
+
+```ml
+fun foo f (op >) x (y,z) =
+let fun bar w = if x > z then y else w
+in f (bar [1,2,3])
+end
+```
+
+The type would be something like `(int list -> 'a) -> (int -> bool) -> int -> ('b * int) -> 'a`, assuming `x`, `y`, and `z` are integers.
+
+**(c)** ML's type inferencer uses the types of the input arguments and the operations performed on them to infer the function's type. It looks at the types of `x`, `y`, `z`, and how they are used in the function (`x > z` implies they are comparable, `bar [1,2,3]` implies `bar` takes a list of integers, etc.) and deduces the most general type that satisfies all constraints.
+
+### 3. Object-Oriented Programming
+
+**(a)** Three features for a language to be considered object-oriented are:
+1. Encapsulation: Bundling data with methods that operate on that data.
+2. Inheritance: Mechanism for a new class to inherit properties and behavior from an existing class.
+3. Polymorphism: Ability for different classes to be treated as instances of the same class, typically via an interface.
+
+**(b)** The “subset interpretation of subtyping” refers to the idea that a subtype should be a subset of its supertype
+
+, meaning every instance of the subtype should also be an instance of the supertype.
+
+**(c)** In Java, class derivation satisfies the subset interpretation because a derived class inherits all the properties and methods of its base class (making it a subset), while also being able to add or override them. For example, if `Bird` is a subtype of `Animal`, then every `Bird` is also an `Animal`, but not every `Animal` is a `Bird`.
+
+**(d)** Examples in Scala:
+1. Function subtyping cannot be covariant in the input type because if it were, you could pass a more general type where a more specific one is expected, leading to runtime errors.
+2. Function subtyping cannot be contravariant in the output type because if it were, a function could return a more specific type than expected, again leading to errors.
+
+**(e)** In Scala, subtyping of functions satisfies the subset interpretation because the relationship between function types respects the Liskov Substitution Principle. Functions can replace each other only if they accept inputs and provide outputs in a manner that preserves the original function's contract.
+
+### 4. Java Generics and Subtyping
+
+**(a)** Example in Java:
+
+```java
+class C<T> {
+    T value;
+
+    void setValue(T value) {
+        this.value = value;
+    }
+
+    T getValue() {
+        return value;
+    }
+}
+
+class A {}
+class B extends A {}
+
+public static void main(String[] args) {
+    C<B> cb = new C<>();
+    C<A> ca = cb; // This should not be allowed
+    ca.setValue(new A()); // Runtime error if allowed
+}
+```
+
+If Java allowed covariant subtyping for generic classes, setting a `B` object to expect an `A` object could lead to runtime errors.
+
+**(b)** To use polymorphism with generics in Java:
+
+```java
+class C<T> {
+    T value;
+
+    void setValue(T value) {
+        this.value = value;
+    }
+
+    T getValue() {
+        return value;
+    }
+
+    <U> void process(C<U> other) {
+        // some processing with other
+    }
+}
+
+public static void main(String[] args) {
+    C<B> cb = new C<>();
+    C<A> ca = new C<>();
+    cb.process(ca); // This is allowed and safe
+}
+```
+
+This way, the function can be called with different instances of generic classes without requiring subtyping.
+
+### 5. Scala Programming
+
+**(a)** Scala function for minimum value in a tree:
+
+```scala
+def minTreeValue[T <: Ordered[T]](tree: Tree[T]): T = tree match {
+    case Node(v, l, r) => List(v, minTreeValue(l), minTreeValue(r)).min
+    case Leaf(v) => v
+}
+```
+
+**(b)** Scala generic class with covariant subtyping:
+
+```scala
+class C[+E]
+```
+
+This allows `C[B]` to be a subtype of `C[A]` if `B` is a subtype of `A`.
+
+**(c)** Example usage:
+
+```scala
+val ca: C[A] = new C[B] // Allowed because of covariance
+```
+
+**(d)** Scala generic class with contravariant subtyping:
+
+```scala
+class C[-E]
+```
+
+This allows `C[A]` to be a subtype of `C[B]` if `B` is a subtype of `A`.
+
+**(e)** Example usage:
+
+```scala
+val cb: C[B] = new C[A] // Allowed because of contravariance
+```
+
+### 6. Garbage Collection
+
+**(a)** Advantage of mark-and-sweep over reference counting:
+- Handles cyclic references better, as it can collect cycles of objects that reference each other but are otherwise unreachable.
+
+**(b)** Advantage of copying garbage collection over mark-and-sweep:
+- Reduces fragmentation by compacting memory, leading to more efficient memory usage.
+
+**(c)** Generational copying garbage collection:
+- Divides objects into generations based on their age. New objects are allocated in a young generation, and as they survive more collections, they are promoted to an older generation. Most garbage collections occur in the young generation, which is smaller and faster to collect.
+
+**(d)** Delete procedure in a reference counting GC system:
+
+```language
+function delete(x) {
+    if (x.count == 1) {
+        for each child in x {
+            child.count--;
+            if (child.count == 0) {
+                delete(child);
+            }
+        }
+        addToFreeList(x);
+    } else {
+        x.count--;
+    }
+}
+```
+
+This function decreases the reference count and deletes the object when its count reaches zero, recursively handling its children.
+
+This covers the detailed answers to your questions. If you have further queries or need clarification on specific points, feel free to ask!
