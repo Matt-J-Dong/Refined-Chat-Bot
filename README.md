@@ -30,6 +30,7 @@ The workflow for fine tuning the LLaMA model, for reference:
 
 For Falcon, `testing_falcon.ipynb` contains all the code to load the pretrained base model, test it, finetune it, save it, and load and test the finetuned model, along with some example outputs. The finetuned version is loaded by using the `adapter_config.json`, `adapter_model.bin`, `special_tokens_map.json`, `tokenizer.json`, and `tokenizer_config.json` files in the `model` folder, and if further trained will save to this folder as well.
 
+For DialoGPT, prelim_testing.ipynb contains all the code to load the pretrained base model, test it, finetune it, save it, and load and test the finetuned model, along with some example outputs.
 ---
 ## Related Works
 * <https://arxiv.org/abs/2211.06869>
